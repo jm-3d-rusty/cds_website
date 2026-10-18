@@ -25,11 +25,6 @@
     --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
 }
 
-pre, code {
-    font-family: 'Inconsolata', SFMono-Regular, Consolas, monospace;
-}
-
-
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -42,9 +37,8 @@ body {
     font-family: var(--font-family);
     line-height: 1.6;
     min-height: 100vh;
-    padding: 1rem; /* Compact padding for smaller mobile screens */
-    max-width: var(--container-max-width);
-    margin: 0 auto;
+    padding: 1rem;
+    width: 100%;
 }
 
 /* Base Link Styling */
@@ -58,6 +52,11 @@ a:hover,
 a:focus {
     color: var(--primary-hover);
     text-decoration: underline;
+}
+
+/* Custom Monospace Font for Code Blocks */
+pre, code {
+    font-family: 'Inconsolata', SFMono-Regular, Consolas, monospace;
 }
 
 /* ==========================================================================
@@ -84,13 +83,29 @@ p {
     color: var(--text-color);
 }
 
-/* Main Container Card Structure */
+/* Centered Layout Wrapper Rule for All Main Section Containers */
+header, main, article, footer {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin-left: auto;
+    margin-right: auto;
+}
+
 main {
     background: var(--card-bg);
     padding: 1.5rem;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     margin-bottom: 2rem;
+}
+
+/* Footer Back Link Styling */
+footer {
+    margin-top: 2.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border-color);
+    text-align: left;
+    font-weight: 500;
 }
 
 /* ==========================================================================
@@ -101,10 +116,9 @@ header {
     margin-bottom: 1.5rem;
 }
 
-
 /* Scaled-down responsive header image maintaining aspect ratio */
 header img {
-    width: 30%;
+    width: 60%;
     max-width: 100%;
     height: auto;
     display: block;
@@ -112,7 +126,7 @@ header img {
     border-radius: var(--radius);
 }
 
-/* Navigation link back to index (used in blog pages) */
+/* Navigation link back to index (used in blog header) */
 header nav,
 header .back-link {
     text-align: left;
@@ -191,21 +205,15 @@ pre {
     padding: 1rem 1.25rem;
     border-radius: var(--radius);
     overflow-x: auto;
-    font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
     font-size: 0.925rem;
     line-height: 1.5;
     margin: 1.5rem 0;
     border: 1px solid var(--border-color);
 }
 
-code {
-    font-family: inherit;
-}
-
 /* ==========================================================================
    6. LATEX / MATHJAX SCROLLING CONTAINER
    ========================================================================== */
-/* Prevents wide display equations from breaking phone screens */
 .MathJax_Display,
 mjx-container[jax="CHTML"][display="true"] {
     overflow-x: auto !important;
