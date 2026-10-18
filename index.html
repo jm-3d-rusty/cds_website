@@ -4,7 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Blog Index</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ==========================================
+           INDEX PAGE STYLES
+           ========================================== */
+        @font-face {
+            font-family: 'Inconsolata';
+            src: url('Inconsolata-Regular.ttf') format('truetype');
+            font-weight: 400;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #2b2b2b;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+            padding: 3rem 1.5rem;
+            max-width: 768px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        header img {
+            width: 50%;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 1.5rem auto;
+            border-radius: 6px;
+        }
+
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #111111;
+        }
+
+        p.intro {
+            font-size: 1.15rem;
+            color: #555555;
+            margin-bottom: 2.5rem;
+        }
+
+        h2 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            color: #111111;
+        }
+
+        ul.post-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+
+        ul.post-list li a {
+            display: block;
+            padding: 1rem 1.25rem;
+            background-color: #f9f9f9;
+            border: 1px solid #e5e5e5;
+            border-radius: 6px;
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.05rem;
+            transition: all 0.15s ease-in-out;
+        }
+
+        ul.post-list li a:hover {
+            background-color: #0066cc;
+            color: #ffffff;
+            border-color: #0066cc;
+            transform: translateY(-1px);
+        }
+    </style>
 </head>
 <body>
 
@@ -14,11 +102,11 @@
     </header>
 
     <main>
-        <p>This is a basic paragraph introducing the blog. You can use your CSS file to style the typography, spacing, and colors of this text to match your brand.</p>
+        <p class="intro">Welcome to my personal notes and blog posts covering technical topics, mathematics, and code projects.</p>
 
         <h2>Recent Posts</h2>
         <ul class="post-list">
-            <li><a href="blog_0000-00-00.html">Blog Post Title 0000-00-00</a></li>
+            <li><a href="blog_0000-00-00.html">First Blog Post Title</a></li>
             <li><a href="blog.html">Second Blog Post Title</a></li>
             <li><a href="blog.html">Third Blog Post Title</a></li>
         </ul>
