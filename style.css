@@ -1,0 +1,243 @@
+/* ==========================================================================
+   1. GLOBAL VARIABLES & RESET
+   ========================================================================== */
+
+@font-face {
+    font-family: 'Inconsolata';
+    src: url('Inconsolata-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --bg-color: #f8f9fa;
+    --card-bg: #ffffff;
+    --text-color: #212529;
+    --muted-color: #495057;
+    --primary-color: #0066cc;
+    --primary-hover: #004499;
+    --border-color: #e9ecef;
+    --code-bg: #f1f3f5;
+    --container-max-width: 850px;
+    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    --radius: 8px;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+}
+
+pre, code {
+    font-family: 'Inconsolata', SFMono-Regular, Consolas, monospace;
+}
+
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 1rem; /* Compact padding for smaller mobile screens */
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+}
+
+/* Base Link Styling */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+a:hover,
+a:focus {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   2. TYPOGRAPHY & FLUID SCALING
+   ========================================================================== */
+h1 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    line-height: 1.25;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    line-height: 1.3;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+p {
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    margin-bottom: 1.25rem;
+    color: var(--text-color);
+}
+
+/* Main Container Card Structure */
+main {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
+
+/* ==========================================================================
+   3. HEADER & BANNER MEDIA
+   ========================================================================== */
+header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+
+/* Scaled-down responsive header image maintaining aspect ratio */
+header img {
+    width: 30%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 1.25rem auto;
+    border-radius: var(--radius);
+}
+
+/* Navigation link back to index (used in blog pages) */
+header nav,
+header .back-link {
+    text-align: left;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   4. INDEX PAGE SPECIFICS (Post Navigation List)
+   ========================================================================== */
+/* Mobile-first stacked touch buttons */
+ul.post-list,
+main ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+ul.post-list li a,
+main ul li a {
+    display: block;
+    background-color: var(--bg-color);
+    padding: 0.875rem 1.25rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+    font-weight: 500;
+}
+
+ul.post-list li a:hover,
+main ul li a:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border-color: var(--primary-color);
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   5. BLOG PAGE MEDIA & RICH CONTENT
+   ========================================================================== */
+/* Responsive Images & Captions */
+figure {
+    margin: 1.5rem 0;
+    text-align: center;
+}
+
+img,
+figure img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: var(--radius);
+}
+
+figcaption {
+    font-size: 0.9rem;
+    color: var(--muted-color);
+    margin-top: 0.5rem;
+}
+
+/* Responsive Embedded Video */
+video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--radius);
+    margin: 1.5rem 0;
+}
+
+/* Code Blocks */
+pre {
+    background-color: var(--code-bg);
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius);
+    overflow-x: auto;
+    font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.925rem;
+    line-height: 1.5;
+    margin: 1.5rem 0;
+    border: 1px solid var(--border-color);
+}
+
+code {
+    font-family: inherit;
+}
+
+/* ==========================================================================
+   6. LATEX / MATHJAX SCROLLING CONTAINER
+   ========================================================================== */
+/* Prevents wide display equations from breaking phone screens */
+.MathJax_Display,
+mjx-container[jax="CHTML"][display="true"] {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    max-width: 100% !important;
+    padding: 0.5rem 0;
+}
+
+/* ==========================================================================
+   7. PC / DESKTOP BREAKPOINTS (min-width: 768px)
+   ========================================================================== */
+@media (min-width: 768px) {
+    body {
+        padding: 2.5rem 1.5rem;
+    }
+
+    main {
+        padding: 2.5rem;
+    }
+
+    /* Grid layout for post list on desktop screens */
+    ul.post-list,
+    main ul {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1rem;
+    }
+
+    ul.post-list li a,
+    main ul li a {
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+}

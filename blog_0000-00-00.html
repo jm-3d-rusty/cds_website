@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post</title>
+
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="blog.css">
+
+    <!-- MathJax Configuration -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            options: {
+                enableMenu: false 
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+    <header>
+        <p><a href="index.html">&larr; Back to Index</a></p>
+    </header>
+
+    <main>
+        <article>
+            <h1>Blog Post Title</h1>
+
+            <p>This is a standard text paragraph introducing the post topic.</p>
+
+            <!-- Inline & Display Mathematics -->
+            <h2>Mathematics Notation</h2>
+            <p>Inline math fits directly inside paragraph flow: $x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$.</p>
+
+            <p>Display equations render prominently on their own line:</p>
+            $$e^{i\pi} + 1 = 0$$
+
+            $$\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}$$
+
+            <!-- Image Display -->
+            <h2>Image Display</h2>
+            <figure>
+                <img src="200x200px_test_PNG.png" alt="Example post image">
+                <figcaption>Caption describing the figure image.</figcaption>
+            </figure>
+
+            <!-- Video Display -->
+            <h2>Video Display</h2>
+            <video controls preload="metadata">
+                <source src="test_video_720p.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <!-- Code Block Display -->
+            <h2>Code Display</h2>
+            <pre><code>// Example JavaScript block
+function greetUser(name) {
+    console.log("Hello, " + name + "!");
+}
+greetUser("Developer");</code></pre>
+        </article>
+
+
+        <!-- Footer placed at the end of the post content -->
+        <footer>
+            <p><a href="index.html">&larr; Back to Index</a></p>
+        </footer>
+
+    </main>
+
+</body>
+</html>
