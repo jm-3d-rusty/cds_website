@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compedium Data Service LLC</title>
+
+    <!-- MathJax Configuration -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            options: { enableMenu: false }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        /* ==========================================
+           BLOG PAGE STYLES
+           ========================================== */
+        @font-face {
+            font-family: 'Inconsolata';
+            src: url('Inconsolata-Regular.ttf') format('truetype');
+            font-weight: 400;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #2b2b2b;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.8;
+            padding: 2.5rem 1.5rem 4rem 1.5rem;
+            max-width: 768px;
+            margin: 0 auto;
+        }
+
+        nav.top-nav {
+            margin-bottom: 2.5rem;
+        }
+
+        nav.top-nav a,
+        footer.post-footer a {
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        nav.top-nav a:hover,
+        footer.post-footer a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #111111;
+            margin-bottom: 1.5rem;
+            line-height: 1.25;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #111111;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        p {
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+            color: #333333;
+        }
+
+        /* LaTeX Container Overflow Handling */
+        .MathJax_Display,
+        mjx-container[jax="CHTML"][display="true"] {
+            overflow-x: auto !important;
+            max-width: 100% !important;
+            padding: 0.5rem 0;
+        }
+
+        /* Media Displays */
+        figure {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        figure img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+        }
+
+        figcaption {
+            font-size: 0.9rem;
+            color: #666666;
+            margin-top: 0.5rem;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 2rem 0;
+        }
+
+        /* Monospace Code Blocks */
+        pre {
+            background-color: #f6f8fa;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 1rem 1.25rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+
+        pre code {
+            font-family: 'Inconsolata', SFMono-Regular, Consolas, monospace;
+            font-size: 0.95rem;
+            color: #24292e;
+        }
+
+        footer.post-footer {
+            margin-top: 4rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #eaeaea;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <a href="index.html">&larr; Back to Index</a>
+    </nav>
+
+    <main>
+        <article>
+
+
+
+
+            <p>2026-10-12</p>
+            <h1>Introduction to IMS-CAD: Intrinsic Mesh Swarm Computer-Aided Design</h1>
+
+            <p>In traditional NURBS-CAD, 3D solids are defined as collections of infinite mathematical equations evaluated over continuous parameter spaces. When curved surfaces intersect—such as an engine manifold meeting a mounting flange—calculating the precise analytical curve where they cross is mathematically impossible for general high-order splines. Legacy CAD kernels must rely on numerical approximations, producing microscopic floating-point rounding errors on the order of fractions of a micron. These floating-point discrepancies create trimming gaps, self-intersecting surfaces, and overlapping "sliver" faces along surface boundaries.</p>
+
+            <p>The consequences of this continuous model plague manufacturing workflows. Trimming errors leave invisible gaps that cause CAD engines to lose track of solid boundaries, producing "leaky" or non-manifold models that crash Constructive Solid Geometry (CSG) Boolean operations. Editing a single feature forces the system to re-evaluate a centralized parametric history tree, triggering global computational bottlenecks across the entire model. Furthermore, before a NURBS model can be manufactured, analyzed, or 3D printed, it must undergo tessellation—a lossy conversion step that translates smooth splines into a discrete triangular mesh. This translation frequently introduces stitching errors, inverted surface normals, and dimensional discrepancies between the intended design and the actual toolpath.</p>
+            
+            <p>Intrinsic Mesh Swarm Computer-Aided Design (IMS-CAD) resolves these issues by abandoning continuous parametric equations entirely. IMS-CAD establishes a new paradigm where a discrete, adaptive mesh is the primary, ground-truth geometry of the system. Instead of viewing a mesh as an approximate export format, IMS-CAD recognizes that digital computers operate natively on discrete structures. By grounding geometry in Discrete Differential Geometry and Combinatorial Topology, IMS-CAD replaces infinite continuous calculus with exact discrete invariants. Curvature is evaluated through discrete turn vectors, spatial rotations are managed via rational quaternions, and spatial locations are mapped onto an internal, fixed-point integer calculation grid. Because spatial relationships and intersection tests are computed using exact integer determinants, rounding error accumulation is eliminated.</p>
+
+            <p>At the core of IMS-CAD is an agent-based architectural paradigm: the Intelligent Geometry Mesh. Within this system, every curvilinear edge acts as an autonomous computational agent, while mesh vertices serve as passive topological communication nodes under the supervision of a Global Controller. Each edge agent continuously monitors its own intrinsic state—its arc length, discrete bending vector, and torsional twist—without referencing a global coordinate origin. The agents communicate locally with immediate topological neighbors, exchanging frame orientations and adjusting their geometry through second-order, critically damped update rules. This critical damping dissipates perturbation energy rapidly, preventing perpetual acoustic-like oscillations and causing local geometry to settle into stable equilibrium within a few interaction rounds.</p>
+
+            <p>To manage localized modifications without triggering unnecessary global updates, IMS-CAD implements a bounded wave propagation mechanism. When an operator edits a feature, the geometric change propagates outward as a damped wavefront across neighboring edge agents. The wave attenuates based on topological distance and energy thresholds, confining updates to a localized region of fifty to a few hundred agents. Over ninety-nine percent of a multi-million-edge mesh remains idle during real-time interaction, achieving localized update performance regardless of total model complexity. System-wide integrity is maintained by the Global Controller, which monitors zero-holonomy loop conditions to guarantee that closed spatial cycles meet seamlessly without topological gaps or global drift.</p>
+
+            <p>Complex assemblies are constructed by organizing the mesh into a hierarchy of independent intrinsic universes, or sub-mesh cells. These sub-mesh cells contain localized integer calculation grids and communicate through Boundary Ports—local orthonormal frame connectors anchored directly to feature geometry. Two distinct components, such as a piston and a connecting rod, are joined by defining a relative transformation constraint between their respective boundary ports without establishing a shared global origin. This modular structure prevents position errors from accumulating across large assemblies and allows individual components to be edited or replaced without disturbing adjacent parts.</p>
+
+            <p>This discrete, agent-driven foundation transforms the reliability of Boolean operations. When two solids intersect in IMS-CAD, the intersection boundaries are evaluated using exact integer arithmetic and snapped deterministically to the internal integer lattice. Because two edges either share the exact same integer grid node or remain distinct, floating-point ambiguity is removed. The result is a system that performs precision Boolean operations while maintaining watertight, leak-proof geometry by construction. Once a cut is executed, adjacent edge agents locally damp out the intersection strain, smoothing the new seam into a physically stable junction.</p>
+            
+            <p>The density of the IMS-CAD adaptive mesh scales dynamically based on local geometric requirements and engineering intent. Edge lengths automatically adjust according to local curvature: flat planar surfaces remain sparse to minimize memory usage, while tight fillets, high-curvature transitions, or regions targeted for stress analysis automatically refine down to nanometer-level tolerances. Because the native discrete mesh is the ground-truth geometry, the error-prone tessellation phase required by legacy CAD is eliminated. Manufacturing toolpaths—whether multi-axis CNC milling paths or additive 3D printing layers—are compiled directly from the adaptive integer mesh using parallel GPU compute pipelines.</p>
+            
+            <p>Global coordinate frames are introduced only at the final stage of production export. The intrinsic mesh of IMS-CAD is not recalculated, the vertices are simply assigned their external X, Y, Z coordinates corresponding to the chosen real-world coordinate frame.  When preparing a design for manufacturing, the operator assigns six degrees of freedom (position and orientation) to a single reference point known as the Root Anchor Node. This anchor grounds the intrinsic super-organism within the physical envelope of a machine tool bed or build chamber, allowing the relative internal geometry to resolve into absolute Cartesian coordinates for code generation.</p>
+            
+            <p>The Rust programming language provides an ideal ecosystem for implementing IMS-CAD. Rust's strict memory safety guarantees, zero-cost abstractions, and thread-safety enforcement enable the construction of cache-coherent data structures, such as Structure-of-Arrays (SoA) memory layouts. This columnar data organization allows multi-million-agent edge swarms to execute deterministic, lock-step parallel iterations across modern multi-core CPUs and GPU compute shaders (wgpu) without lock contention or data races.</p>
+            
+            <p>By replacing the continuous approximations of NURBS with the structural consistency of discrete mathematics, IMS-CAD resolves the long-standing challenges of surface trimming, computational drift, and manufacturing translation. IMS-CAD provides a deterministic, highly parallel, and watertight framework designed for the requirements of modern digital engineering.</p> 
+
+            <hr>
+            
+            <p>From the white paper preprint: Intrinsic Mesh Swarm Computer-Aided Design (IMS-CAD), Extended Abstract & Technical Foundations. 2026-10-11. Published on <a href="https://zenodo.org/records/23303202/preview/ims-cad-whitepaper-2026-v1.0.pdf?include_deleted=0">&rarr; Zenodo</a> . </p>
+           
+        </article>
+    </main>
+
+    <footer class="post-footer">
+        <a href="index.html">&larr; Back to Index</a>
+    </footer>
+
+</body>
+</html>
