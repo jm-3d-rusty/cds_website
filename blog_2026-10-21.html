@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compedium Data Service LLC</title>
+
+    <!-- MathJax Configuration -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            options: { enableMenu: false }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        /* ==========================================
+           BLOG PAGE STYLES
+           ========================================== */
+        @font-face {
+            font-family: 'Inconsolata';
+            src: url('Inconsolata-Regular.ttf') format('truetype');
+            font-weight: 400;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #e7e7e7;
+            color: #2b2b2b;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.8;
+            padding: 2.5rem 1.5rem 4rem 1.5rem;
+            max-width: 768px;
+            margin: 0 auto;
+        }
+
+        nav.top-nav {
+            margin-bottom: 2.5rem;
+        }
+
+        nav.top-nav a,
+        footer.post-footer a {
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        nav.top-nav a:hover,
+        footer.post-footer a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #111111;
+            margin-bottom: 1.5rem;
+            line-height: 1.25;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #111111;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        p {
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+            color: #333333;
+        }
+
+        /* LaTeX Container Overflow Handling */
+        .MathJax_Display,
+        mjx-container[jax="CHTML"][display="true"] {
+            overflow-x: auto !important;
+            max-width: 100% !important;
+            padding: 0.5rem 0;
+        }
+
+        /* Media Displays */
+        figure {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        figure img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+        }
+
+        figcaption {
+            font-size: 0.9rem;
+            color: #666666;
+            margin-top: 0.5rem;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 2rem 0;
+        }
+
+        /* Monospace Code Blocks */
+        pre {
+            background-color: #f6f8fa;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 1rem 1.25rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+
+        pre code {
+            font-family: 'Inconsolata', SFMono-Regular, Consolas, monospace;
+            font-size: 0.95rem;
+            color: #24292e;
+        }
+
+        footer.post-footer {
+            margin-top: 4rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #eaeaea;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <a href="index.html">&larr; Back to Index</a>
+    </nav>
+
+    <main>
+        <article>
+            <p>2026-10-21</p>
+            <h1>Avoid Problems -<br>Infinity is not needed in CAD</h1>
+
+            <p>The paradigm shift of IMS-CAD is from NURBS <em>infinite</em> geometry to intrinsic <em>discrete</em> geometry. IMS-CAD has the concept of dual precision grids: 1. the Ground-Truth Grid, and 2. the Model Grid. The dual-grid concept separates the ground-truth calculation lattice from the CAD operator interaction scale. The ground-truth lattice is a discrete 1 nanometer resolution snap grid and is the basis for the model universe and the means to eliminate round-off error accumulation. The model design grid has typically 1/100 of a millimeter resolution which has enough precision for most manufacturing. The snap precision underneath 1/100 mm is a factor of 10,000.</p>
+
+            <p>This dual-grid model is a core pillar in IMS-CAD for eliminating numerical round-off drift and non-determinism.</p>
+
+            <h2>64-bit Integer Space</h2>
+
+            <p> 64-bit signed integers (i64) range: approximately $\pm 9.22 \times 10^{18}$.</p>
+
+            <p>At $1\text{ nm}$ resolution, i64 provides a span of $\pm 9.22 \times 10^9\text{ meters}$ (over $9$ million kilometers or $18$ million kilometers end-to-end), giving virtually unlimited spatial headroom for any engineering assembly without coordinate integer overflow.</p>
+
+            <h2>How the Dual-Grid Paradigm Works</h2>
+
+            <p>The dual-grid concept separates the ground-truth calculation lattice from the CAD operator interaction scale:</p>
+
+            <figure>
+                <img src="graphic_dual-grid_architecture.png" alt="graphic">
+                <figcaption></figcaption>
+            </figure>
+
+            <h2>1. The Model Snap Lattice (1 Nanometer Ground Truth)</h2>
+
+            <p>Every vertex location, edge split, and CSG intersection point is stored as an exact integer coordinate ($\mathbb{Z}^3$) on this 1 nm lattice. Because spatial predicates rely on exact integer sign determinants rather than floating-point $\epsilon$-thresholds, two geometric elements either share the exact same 64-bit integer coordinate or remain distinct. This completely eliminates the floating-point rounding accumulation, micro-gaps, edge slivers, and non-manifold "leaky" geometry that destabilize legacy NURBS kernels.</p>
+
+            <h2>2. The Model Design Grid (0.01 mm / 10,000 nm Operator Space)</h2>
+
+            <p>This represents the human/engineering interaction scale. CAD operators work in $0.01\text{ mm}$ ($10\text{ }\mu\text{m}$) increments, which matches high-precision CNC toolhead and additive manufacturing steps. Because, the ratio between the design grid and the underlying calculation lattice is an exact integer ratio (10,000 : 1). This  sub-grid safety factor gives the engine several orders of magnitude of exact sub-resolution arithmetic space to execute exact snap-rounding, edge splitting, and agentic seam relaxation without rounding errors bleeding back into the user's intended  manufacturing features.</p>
+
+            <h2>Why This Eliminates Round-Off Error</h2>
+
+            <p>In traditional NURBS-CAD, evaluating intersections requires floating-point root-finding over $\mathbb{R}^3$. Because IEEE 754 floating-point addition and multiplication are non-associative, repeating operations or evaluating them in different order yields slightly different spatial coordinates.</p>
+
+            <p>In IMS-CAD:</p>
+
+            <p>1. All geometry is grounded on discrete integer positions ($\mathbb{Z}^3$).<br>
+            2. Intersection points are evaluated using exact rational arithmetic and snapped deterministically to the 1 nm integer lattice.<br>
+            3. Seam strain is relaxed via discrete agent difference equations.</p>
+
+            <h2>The 1 nm Grid is Not an Extrinsic 3D Coordinant Frame</h2>
+
+            <p>IMS-CAD is an intrinsic geometry system; a self-referencing geometry system.</p>
+
+            <p>The 1 nm lattice is an intrinsic discrete metric space (a set of discrete spatial quantizations), not an extrinsic coordinate frame. Understanding why this distinction holds is critical for building Rust IMS-CAD engine correctly.</p>
+
+            <h2>Extrinsic Frame vs. Intrinsic Metric Space</h2>
+
+            <p>To see why the lattice is intrinsic rather than extrinsic, consider what defines an extrinsic coordinate frame versus an intrinsic set of discrete units:</p>
+
+            <figure>
+                <img src="graphic_extrinsic_frame_vs_intrinsic_lattice.png" alt="graphic">
+                <figcaption></figcaption>
+            </figure>
+
+            <h2>How the 1 nm Latice Functions Intrinsically</h2>
+            
+            <p>In IMS-CAD, the $1\text{ nm}$ grid serves as the quantization scale for discrete metric space ($\mathbb{Z}^3$), rather than a global Cartesian reference frame:</p>
+
+            <p>1. Local Grid Quantization: When an active edge agent measures its arc length $s$, it expresses that length as an integer count of nanometer quanta (such as, $s = 10,450,000\text{ nm}$). It does not care where those nanometers sit relative to a global world origin.</p>
+
+            <p>2. Isolated Cell Sub-Universes: Each SubMeshCell contains its own local calculation space ($\mathbb{Z}^3$). Two independent components (like a bracket and a bolt) each have their own internal $1\text{ nm}$ integer metric. They do not share a common $X,Y,Z$ space until docked via Boundary Ports using relative Lie group transformations ($\mathrm{SE}(3)$).</p>
+
+            <p>3. Invariance Under Motion: When an assembly or sub-mesh cell moves, its internal integer edge lengths, turn vectors, and local integer coordinates do not undergo floating-point matrix transformations. The internal geometry remains completely untouched.</p>
+
+            <h2>The Benefit</h2>
+
+            <p>Space in the physical universe has discrete operational scales, but physical objects don't lose their shape or internal strain merely because they move through space. Similarly, in IMS-CAD, the  lattice is simply the discrete fundamental unit of length that enables exact integer determinants, exact snap-rounding, and 100% deterministic arithmetic without floating-point drift.</p>
+
+            <p>The $1\text{ nm}$ lattice is the set of discrete integers ($\mathbb{Z}^3$) that quantizes local metric space, keeping geometry exact and intrinsic without relying on a global extrinsic coordinate system.</p>
+                      
+            
+        </article>
+    </main>
+
+     <footer class="post-footer">       
+        <a href="index.html">&larr; Back to Index <br></a>
+       <div class="footer-col">
+           <p>&copy; 2026 Compendium Data Service LLC. All rights reserved.</p>
+        </div>        
+ </footer>
+
+</body>
+</html>
